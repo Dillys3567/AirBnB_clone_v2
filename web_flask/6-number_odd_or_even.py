@@ -48,6 +48,22 @@ def number_template(n):
     """Dispaly html page if only <n> is an integer. """
     return render_template("5-number.html", n=n)
 
+# Define the route for '/number_odd_or_even/<n>'
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def number_odd_or_even(n):
+    """Display HTML page if n is an integer
+    """
+    if isinstance(n, int):
+        # Determine if n is odd or even
+        even_or_odd = "even" if n % 2 == 0 else "odd"
+        # Render the template and pass n to template
+        return render_template('6-number_odd_or_even.html',
+                n=n, even_or_odd=even_or_odd)
+    else:
+        # If n is not int return error
+        return "Invalid input. Please provide an integer."
+
+
 if __name__ == "__main__":
     # Start flask server
     app.run(host='0.0.0.0', port=5000)
