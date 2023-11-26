@@ -1,4 +1,4 @@
-3
+#!/usr/bin/python
 """Start a flask application
 """
 
